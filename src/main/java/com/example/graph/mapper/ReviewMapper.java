@@ -13,8 +13,11 @@ public interface ReviewMapper {
 
     Long save(Review review); // 왜 Long으로 반환했드라?
 
-//    ReviewResDto findByReviewer(String reviewer);
+    List<Review> findAll();
+
     List<Review> findByReviewer(String reviewer);
 
-    Review findById(double vId);
+    void deleteByReviewer(String reviewer);
+
+    Review findById(Object vId);
 }

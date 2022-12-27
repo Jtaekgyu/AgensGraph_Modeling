@@ -15,7 +15,7 @@ public class ReviewResDto {
 
     String review;
 
-    int rating;
+    Integer rating;
 
     public ReviewResDto(Review review){
         this.reviewer = review.getReviewer();

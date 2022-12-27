@@ -11,7 +11,11 @@ public interface ReviewService {
 
     ReviewResDto create(ReviewCreateReqDto reqDto);
 
+    List<ReviewResDto> findAll();
+
     List<ReviewResDto> matchByReviewer(String reviewer);
 
-    ReviewResDto findById(double vId);
+    void deleteByReviewer(String reviewer);
+
+    ReviewResDto findById(Object vId);
 }

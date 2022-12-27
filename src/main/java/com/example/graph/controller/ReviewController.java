@@ -27,15 +27,27 @@ public class ReviewController {
         return Response.success(resDto);
     }
 
+    @GetMapping // 위에 /review 있음
+    public Response<List<ReviewResDto>> findAll(){
+        List<ReviewResDto> resDtoList = reviewService.findAll();
+        return Response.success(resDtoList);
+    }
+
     @GetMapping("/findByReviewer/{reviewer}")
     public Response<List<ReviewResDto>> matchByReviewer(@PathVariable String reviewer){
-        List<ReviewResDto> resDto = reviewService.matchByReviewer(reviewer);
-        return Response.success(resDto);
+        List<ReviewResDto> resDtoList = reviewService.matchByReviewer(reviewer);
+        return Response.success(resDtoList);
+    }
+
+    @DeleteMapping("/delete/{reviewer}")
+    public Response<Void> deleteByReviewer(@PathVariable String reviewer){
+        reviewService.deleteByReviewer(reviewer);
+        return Response.success();
     }
 
     @GetMapping("findById/{vId}")
-    public ReviewResDto matchById(@PathVariable double vId){
+    public Response<ReviewResDto> matchById(@PathVariable Object vId){
         ReviewResDto resDto = reviewService.findById(vId);
-        return resDto;
+        return Response.success(resDto);
     }
 }

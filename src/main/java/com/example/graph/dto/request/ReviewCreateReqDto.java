@@ -11,6 +11,6 @@ public class ReviewCreateReqDto {
 
     String review;
 
-    int rating;
+    Integer rating;
 
 }

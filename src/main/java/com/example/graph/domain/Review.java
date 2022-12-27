@@ -19,7 +19,7 @@ public class Review {
 
     private String review;
 
-    private int rating;
+    private Integer rating;
 
     public Review(ReviewCreateReqDto reqDto){
         this.reviewer = reqDto.getReviewer();

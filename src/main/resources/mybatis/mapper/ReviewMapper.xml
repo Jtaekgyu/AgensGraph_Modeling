@@ -11,15 +11,25 @@
         CREATE (R:Review {reviewer : #{reviewer}, review: #{review}, rating: #{rating}});
     </insert>
 
+    <select id="findAll" resultType="com.example.graph.domain.Review">
+        MATCH (R:Review)
+        RETURN R.reviewer as reviewer, R.review as review, R.rating as rating;
+    </select>
                                                         <!-- resultType 주의하자 -->
     <select id="findByReviewer" parameterType="String" resultType="com.example.graph.domain.Review">
         MATCH (R:Review) WHERE R.reviewer =#{reviewer}
         RETURN R.reviewer as reviewer, R.review as review, R.rating as rating;
     </select>
 
-    <select id="findById" parameterType="double" resultType="com.example.graph.domain.Review">
-        MATCH (R) WHERE id(R) = #{vId} return R;
+    <select id="findById" parameterType="Object" resultType="com.example.graph.domain.Review">
+        MATCH (R) WHERE id(R) = #{vId}
+        RETURN R.reviewer as reviewer, R.review as review, R.rating as rating;
     </select>
+
+    <delete id="deleteByReviewer" parameterType="String">
+        MATCH (r:review {reviewer:#{reviewer} } )
+        DELETE R;
+    </delete>
 <!--
 CREATE (m1:movie {name:'The Matrix', rating:10})
 create (r1: Review { reviewer: 'person1', review: 'good movie!', rating: 10})

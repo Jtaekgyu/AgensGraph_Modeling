@@ -29,8 +29,16 @@ public class ReviewServiceImpl implements ReviewService{
         return resDto;
     }
 
+    public List<ReviewResDto> findAll(){
+        List<ReviewResDto> reviewResDtoList = new ArrayList<>();
+        List<Review> reviewList = reviewMapper.findAll();
+        for(Review tmpReview : reviewList){
+            reviewResDtoList.add(new ReviewResDto(tmpReview));
+        }
+        return reviewResDtoList;
+    }
+
     public List<ReviewResDto> matchByReviewer(String reviewer){
-//        return reviewMapper.findByReviewer(reviewer);
         List<ReviewResDto> reviewResDtoList = new ArrayList<>();
         List<Review> reviewList = reviewMapper.findByReviewer(reviewer);
         for(Review tmpReview : reviewList){
@@ -39,7 +47,11 @@ public class ReviewServiceImpl implements ReviewService{
         return reviewResDtoList;
     }
 
-    public ReviewResDto findById(double vId){
+    public void deleteByReviewer(String reviewer){
+        reviewMapper.deleteByReviewer(reviewer);
+    }
+
+    public ReviewResDto findById(Object vId){
          Review review = reviewMapper.findById(vId);
          ReviewResDto resDto = new ReviewResDto(review);
          return resDto;
