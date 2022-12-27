@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.graph.mapper.ReviewMapper">
+
+    <update id="setGraphPath">
+        set graph_path = movie;
+    </update>
+
+    <insert id="save" parameterType="com.example.graph.domain.Review" useGeneratedKeys="true" keyProperty="reviewId">
+        CREATE (R:Review {reviewer : #{reviewer}, review: #{review}, rating: #{rating}});
+    </insert>
+
+                                                        <!-- resultType 주의하자 -->
+    <select id="findByReviewer" parameterType="String" resultType="com.example.graph.domain.Review">
+        MATCH (R:Review) WHERE R.reviewer =#{reviewer}
+        RETURN R.reviewer as reviewer, R.review as review, R.rating as rating;
+    </select>
+
+    <select id="findById" parameterType="double" resultType="com.example.graph.domain.Review">
+        MATCH (R) WHERE id(R) = #{vId} return R;
+    </select>
+<!--
+CREATE (m1:movie {name:'The Matrix', rating:10})
+create (r1: Review { reviewer: 'person1', review: 'good movie!', rating: 10})
+-->
+    <!-- MATCH (V)-[R]->(V2) WHERE LABEL(R) = 'invest' RETURN V.투자자이름, LABEL(R), V2.투자받은회사이름;
+    투자자이름, 투자받은회사이름 이런게 properties입니다.
+    원래대로라면 jsonb에 박혀있겠죠-->
+
+</mapper>

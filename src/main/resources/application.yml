@@ -1,0 +1,26 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:6434/agens # agens-modeling01(docker container name)
+    username: agens
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 4
+
+  jpa:
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLdialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        # show_sql: true # jpa가 실행하는 query를 console에 찍는다.
+        format_sql: true  # query가 format돼서 예쁘게 나온다.
+    database: postgresql
+
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+logging.level:
+  org.hibernate.SQL: debug # console애 남기지 않고 log 파일에 남긴다.
+  com.example.graph.mapper: trace
