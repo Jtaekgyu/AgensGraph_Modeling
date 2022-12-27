@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.graph.mapper.MovieMapper">
+
+    <!-- useGeneratedKeys : 자동 생커 키값을 사용,  keyProperty : 리턴이된 키 값들을 어느 필드에 set할건지 나타냄-->
+    <insert id="save" parameterType="com.example.graph.domain.Review" useGeneratedKeys="true" keyProperty="movieId">
+        CREATE (M:Movie {name : #{name}, rating: #{rating} });
+    </insert>
+
+    <select id="findAll" resultType="com.example.graph.domain.Movie">
+        MATCH (M:Movie)
+        RETURN M.name as name, M.rating as rating;
+    </select>
+
+    <select id="findByName" parameterType="String" resultType="com.example.graph.domain.Movie">
+        MATCH (M:Movie) WHERE M.name =#{name}
+        RETURN M.name as name, M.rating as rating;
+    </select>
+
+</mapper>
