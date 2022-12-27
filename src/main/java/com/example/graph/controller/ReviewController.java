@@ -1,5 +1,6 @@
 package com.example.graph.controller;
 
+import com.example.graph.controller.response.Response;
 import com.example.graph.dto.request.ReviewCreateReqDto;
 import com.example.graph.dto.response.ReviewResDto;
 import com.example.graph.service.ReviewService;
@@ -21,14 +22,15 @@ public class ReviewController {
     }
 
     @PostMapping("/create")
-    public void create(@RequestBody ReviewCreateReqDto reqDto){
-        reviewService.create(reqDto);
+    public Response<?> create(@RequestBody ReviewCreateReqDto reqDto){
+        ReviewResDto resDto = reviewService.create(reqDto);
+        return Response.success(resDto);
     }
 
     @GetMapping("/findByReviewer/{reviewer}")
-    public List<ReviewResDto> matchByReviewer(@PathVariable String reviewer){
+    public Response<List<ReviewResDto>> matchByReviewer(@PathVariable String reviewer){
         List<ReviewResDto> resDto = reviewService.matchByReviewer(reviewer);
-        return resDto;
+        return Response.success(resDto);
     }
 
     @GetMapping("findById/{vId}")

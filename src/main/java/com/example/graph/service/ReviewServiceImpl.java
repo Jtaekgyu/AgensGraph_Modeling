@@ -22,9 +22,11 @@ public class ReviewServiceImpl implements ReviewService{
         reviewMapper.setGraphPath();
     }
 
-    public void create(ReviewCreateReqDto reqDto){
+    public ReviewResDto create(ReviewCreateReqDto reqDto){
         Review review = new Review(reqDto);
         reviewMapper.save(review);
+        ReviewResDto resDto = new ReviewResDto(review);
+        return resDto;
     }
 
     public List<ReviewResDto> matchByReviewer(String reviewer){

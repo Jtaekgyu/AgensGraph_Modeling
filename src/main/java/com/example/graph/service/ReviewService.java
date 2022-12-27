@@ -9,7 +9,7 @@ public interface ReviewService {
 
     void setGraphPath();
 
-    void create(ReviewCreateReqDto reqDto);
+    ReviewResDto create(ReviewCreateReqDto reqDto);
 
     List<ReviewResDto> matchByReviewer(String reviewer);
 
