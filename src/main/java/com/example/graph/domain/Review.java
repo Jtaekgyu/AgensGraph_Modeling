@@ -7,14 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
-//@Setter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Review {
 
-    private Long reviewId;
+//    private Long reviewId;
 
-    // 이름이 R.reviewer as reviewer(이것)과 같아야 한다.
+    // 이름이 R.reviewer as reviewer(이것)과 #{reviewer}(이것)도 같아야 한다.
     private String reviewer;
 
     private String review;

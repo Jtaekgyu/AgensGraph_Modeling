@@ -7,7 +7,7 @@
         set graph_path = movie;
     </update>
 
-    <insert id="save" parameterType="com.example.graph.domain.Review" useGeneratedKeys="true" keyProperty="reviewId">
+    <insert id="save" parameterType="com.example.graph.domain.Review" useGeneratedKeys="true">
         CREATE (R:Review {reviewer : #{reviewer}, review: #{review}, rating: #{rating}});
     </insert>
 
@@ -28,7 +28,7 @@
 
     <delete id="deleteByReviewer" parameterType="String">
         MATCH (r:review {reviewer:#{reviewer} } )
-        DELETE R;
+        DETACH DELETE R;
     </delete>
 <!--
 CREATE (m1:movie {name:'The Matrix', rating:10})

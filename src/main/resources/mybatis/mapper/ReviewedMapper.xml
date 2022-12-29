@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.graph.mapper.EdgeMapper">
+
+    <insert id="saveEdge" parameterType="com.example.graph.domain.edge.Reviewed" useGeneratedKeys="true">
+        CREATE
+        (R:Review { rating: #{review.rating}, review: #{review.review}, reviewer: #{review.reviewer} } ),
+        (M:movie{ name: #{movie.name}, rating:#{movie.rating} } ),
+        (R)-[E:reviewed]->(M);
+    </insert>
+    <!--CREATE
+    (R:Review { rating: #{rating}, review: #{review}, reviewer: #{person} } ),
+    (M:movie{ name: #{name}, rating:#{rating} } ),
+    (R)-[E:reviewed]->(M);-->
+</mapper>
