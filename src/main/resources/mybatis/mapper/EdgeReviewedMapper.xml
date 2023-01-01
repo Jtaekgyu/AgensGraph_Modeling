@@ -13,4 +13,19 @@
     (R:Review { rating: #{rating}, review: #{review}, reviewer: #{person} } ),
     (M:movie{ name: #{name}, rating:#{rating} } ),
     (R)-[E:reviewed]->(M);-->
+
+    <insert id="saveMovieToMovie" parameterType="com.example.graph.domain.edge.EdgeMovieToMovie" useGeneratedKeys="true">
+        CREATE
+        (M1:Movie { name: #{movie1.name}, rating: #{movie1.rating} } ),
+        (M2:Movie { name: #{movie2.name}, rating: #{movie2.rating} } ),
+        (M1)-[E:EdgeMovieToMovie]->(M2);
+    </insert>
+    
+    <insert id="saveEdgeReviewd" parameterType="com.example.graph.domain.edge.EdgeReviewed" useGeneratedKeys="true">
+        CREATE
+        (R:Review { reviewer: #{review.reviewer}, review: #{review.review}, rating:#{review.rating} } ),
+        (M:Moview { name: #{movie.name}, rating: #{movie.rating} } ),
+        (R)-[E:Reviewed]->(M);
+    </insert>
+
 </mapper>

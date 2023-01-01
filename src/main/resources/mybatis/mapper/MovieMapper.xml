@@ -4,7 +4,7 @@
 <mapper namespace="com.example.graph.mapper.MovieMapper">
 
     <!-- useGeneratedKeys : 자동 생커 키값을 사용,  keyProperty : 리턴이된 키 값들을 어느 필드에 set할건지 나타냄-->
-    <insert id="save" parameterType="com.example.graph.domain.Review" useGeneratedKeys="true" keyProperty="movieId">
+    <insert id="save" parameterType="com.example.graph.domain.Movie" useGeneratedKeys="true" keyProperty="movieId">
         CREATE (M:Movie {name : #{name}, rating: #{rating} });
     </insert>
 
