@@ -2,6 +2,7 @@ package com.example.graph.service;
 
 import com.example.graph.domain.Review;
 import com.example.graph.dto.request.ReviewCreateReqDto;
+import com.example.graph.dto.request.ReviewFindAllReqDto;
 import com.example.graph.dto.response.ReviewResDto;
 import com.example.graph.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,15 @@ public class ReviewServiceImpl implements ReviewService{
     public List<ReviewResDto> matchByReviewer(String reviewer){
         List<ReviewResDto> reviewResDtoList = new ArrayList<>();
         List<Review> reviewList = reviewMapper.findByReviewer(reviewer);
+        for(Review tmpReview : reviewList){
+            reviewResDtoList.add(new ReviewResDto(tmpReview));
+        }
+        return reviewResDtoList;
+    }
+
+    public List<ReviewResDto> findAllByObject(ReviewFindAllReqDto reqDto){
+        List<ReviewResDto> reviewResDtoList = new ArrayList<>();
+        List<Review> reviewList = reviewMapper.findAllByObject(reqDto);
         for(Review tmpReview : reviewList){
             reviewResDtoList.add(new ReviewResDto(tmpReview));
         }

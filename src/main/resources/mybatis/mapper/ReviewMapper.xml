@@ -21,6 +21,12 @@
         RETURN R.reviewer as reviewer, R.review as review, R.rating as rating;
     </select>
 
+    <!-- parameterType 안적어도 되네..-->
+    <select id="findAllByObject" resultType="com.example.graph.domain.Review">
+        MATCH (R:Review { reviewer:#{reviewer}, review:#{review}, rating:#{rating} } )
+        return R.reviewer as reviewer, R.review as review, R.rating as rating;
+    </select>
+
     <select id="findById" parameterType="Object" resultType="com.example.graph.domain.Review">
         MATCH (R) WHERE id(R) = #{vId}
         RETURN R.reviewer as reviewer, R.review as review, R.rating as rating;

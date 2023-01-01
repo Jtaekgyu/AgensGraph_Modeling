@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Movie {
 
-    private Long movieId;
-
     private String name;
 
     private Integer rating;

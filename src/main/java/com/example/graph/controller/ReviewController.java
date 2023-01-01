@@ -2,6 +2,7 @@ package com.example.graph.controller;
 
 import com.example.graph.controller.response.Response;
 import com.example.graph.dto.request.ReviewCreateReqDto;
+import com.example.graph.dto.request.ReviewFindAllReqDto;
 import com.example.graph.dto.response.ReviewResDto;
 import com.example.graph.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,12 @@ public class ReviewController {
     @GetMapping("/findByReviewer/{reviewer}")
     public Response<List<ReviewResDto>> matchByReviewer(@PathVariable String reviewer){
         List<ReviewResDto> resDtoList = reviewService.matchByReviewer(reviewer);
+        return Response.success(resDtoList);
+    }
+
+    @GetMapping("/findAllByObject")
+    public Response<List<ReviewResDto>> findAllByObject(@RequestBody ReviewFindAllReqDto reqDto){
+        List<ReviewResDto> resDtoList = reviewService.findAllByObject(reqDto);
         return Response.success(resDtoList);
     }
 

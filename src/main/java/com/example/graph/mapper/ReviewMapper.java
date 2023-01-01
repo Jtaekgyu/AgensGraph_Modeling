@@ -1,6 +1,7 @@
 package com.example.graph.mapper;
 
 import com.example.graph.domain.Review;
+import com.example.graph.dto.request.ReviewFindAllReqDto;
 import com.example.graph.dto.response.ReviewResDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -16,6 +17,8 @@ public interface ReviewMapper {
     List<Review> findAll();
 
     List<Review> findByReviewer(String reviewer);
+
+    List<Review> findAllByObject(ReviewFindAllReqDto reqDto);
 
     void deleteByReviewer(String reviewer);
 
