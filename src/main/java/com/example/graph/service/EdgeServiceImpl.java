@@ -45,7 +45,8 @@ public class EdgeServiceImpl implements EdgeService{
 
         edgeMapper.saveMovieToMovie(edge1);
         Object result = edge1;
-        return result;
+//        return result;
+        return graph.getAllEdges(movie1, movie2);
     }
 
     public Object createReviewToMovie(EdgeCreateReqDto reqDto){

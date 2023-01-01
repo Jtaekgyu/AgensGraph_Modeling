@@ -12,4 +12,6 @@ public interface MovieService {
     List<MovieResDto> findAll();
 
     List<MovieResDto> findByName(String name);
+
+    void deleteByName(String name);
 }

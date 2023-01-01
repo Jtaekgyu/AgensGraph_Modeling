@@ -24,7 +24,7 @@
     <insert id="saveEdgeReviewd" parameterType="com.example.graph.domain.edge.EdgeReviewed" useGeneratedKeys="true">
         CREATE
         (R:Review { reviewer: #{review.reviewer}, review: #{review.review}, rating:#{review.rating} } ),
-        (M:Moview { name: #{movie.name}, rating: #{movie.rating} } ),
+        (M:Movie { name: #{movie.name}, rating: #{movie.rating} } ),
         (R)-[E:Reviewed]->(M);
     </insert>
 

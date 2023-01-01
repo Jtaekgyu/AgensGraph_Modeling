@@ -34,4 +34,10 @@ public class MovieController {
         return Response.success(resDtoList);
     }
 
+    @DeleteMapping("/delete/{name}")
+    public Response<Void> deleteByName(@PathVariable String name){
+        movieService.deleteByName(name);
+        return Response.success();
+    }
+
 }

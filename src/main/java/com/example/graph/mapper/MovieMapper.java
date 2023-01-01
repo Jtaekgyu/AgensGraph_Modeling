@@ -13,4 +13,6 @@ public interface MovieMapper {
     List<Movie> findAll();
 
     List<Movie> findByName(String name);
+
+    void deleteByName(String name);
 }

@@ -42,4 +42,8 @@ public class MovieServiceImpl implements MovieService{
         }
         return movieResDtoList;
     }
+
+    public void deleteByName(String name){
+        movieMapper.deleteByName(name);
+    }
 }

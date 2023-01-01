@@ -17,5 +17,10 @@
         MATCH (M:Movie) WHERE M.name =#{name}
         RETURN M.name as name, M.rating as rating;
     </select>
+    
+    <delete id="deleteByName" parameterType="String">
+        MATCH (M:Movie {name: #{name} } )
+        DETACH DELETE M;
+    </delete>
 
 </mapper>
