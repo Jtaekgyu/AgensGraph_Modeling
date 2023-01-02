@@ -18,6 +18,11 @@
         RETURN M.name as name, M.rating as rating;
     </select>
     
+    <select id="findAllByObject" resultType="com.example.graph.domain.Movie">
+        MATCH (M:Movie {name: #{name}, rating:#{rating} } )
+        RETURN M.name as name, M.rating as rating;
+    </select>
+    
     <delete id="deleteByName" parameterType="String">
         MATCH (M:Movie {name: #{name} } )
         DETACH DELETE M;

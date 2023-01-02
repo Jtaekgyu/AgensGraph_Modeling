@@ -1,6 +1,7 @@
 package com.example.graph.service;
 
 import com.example.graph.dto.request.MovieCreateReqDto;
+import com.example.graph.dto.request.MovieObjectReqDto;
 import com.example.graph.dto.response.MovieResDto;
 
 import java.util.List;
@@ -12,6 +13,8 @@ public interface MovieService {
     List<MovieResDto> findAll();
 
     List<MovieResDto> findByName(String name);
+
+    List<MovieResDto> findAllByObject(MovieObjectReqDto reqDto);
 
     void deleteByName(String name);
 }

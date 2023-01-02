@@ -2,6 +2,7 @@ package com.example.graph.service;
 
 import com.example.graph.domain.Movie;
 import com.example.graph.dto.request.MovieCreateReqDto;
+import com.example.graph.dto.request.MovieObjectReqDto;
 import com.example.graph.dto.response.MovieResDto;
 import com.example.graph.mapper.MovieMapper;
 import lombok.RequiredArgsConstructor;
@@ -37,6 +38,15 @@ public class MovieServiceImpl implements MovieService{
     public List<MovieResDto> findByName(String name){
         List<MovieResDto> movieResDtoList = new ArrayList<>();
         List<Movie> movieList = movieMapper.findByName(name);
+        for(Movie movie : movieList){
+            movieResDtoList.add(new MovieResDto(movie));
+        }
+        return movieResDtoList;
+    }
+
+    public List<MovieResDto> findAllByObject(MovieObjectReqDto reqDto){
+        List<MovieResDto> movieResDtoList = new ArrayList<>();
+        List<Movie> movieList = movieMapper.findAllByObject(reqDto);
         for(Movie movie : movieList){
             movieResDtoList.add(new MovieResDto(movie));
         }
