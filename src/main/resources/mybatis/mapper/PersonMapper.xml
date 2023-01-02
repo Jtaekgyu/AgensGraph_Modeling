@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.graph.mapper.PersonMapper">
+    
+    <insert id="save">
+        CREATE (P:Person {name: #{name}, born:#{born}, job:#{job} } )
+    </insert>
+    
+    <select id="findAll" resultType="com.example.graph.domain.Person">
+        MATCH (P:Person)
+        RETURN P.name as name, P.born as born, P.job as job;
+    </select>
+
+    <select id="findAllByObject" resultType="com.example.graph.domain.Person">
+        MATCH (P:Person { name:#{name}, born:#{born}, job:#{job} } )
+        return P.name as name, P.born as born, P.job as job;
+    </select>
+
+    <update id="updateByObject" parameterType="com.example.graph.dto.request.PersonUpdateReqDto">
+        MATCH (P:Person {name: #{reqDto1.name}, born:#{reqDto1.born}, job:#{reqDto1.job} } )
+        SET P.name = #{reqDto2.name}, P.born = #{reqDto2.born}, P.job = #{reqDto2.job};
+    </update>
+    
+    <delete id="deleteByObject" parameterType="com.example.graph.dto.request.PersonObjectReqDto">
+        MATCH (P:Person{name: #{name}, born:#{born}, job:#{job} } )
+        DETACH DELETE(P);
+    </delete>
+</mapper>
