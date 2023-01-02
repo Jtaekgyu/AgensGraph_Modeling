@@ -1,5 +1,6 @@
 package com.example.graph.mapper;
 
+import com.example.graph.domain.edge.EdgeDirected;
 import com.example.graph.domain.edge.EdgeMovieToMovie;
 import com.example.graph.domain.edge.EdgeReviewed;
 import com.example.graph.domain.edge.Reviewed;
@@ -13,4 +14,6 @@ public interface EdgeMapper {
     void saveMovieToMovie(EdgeMovieToMovie edge);
 
     void saveEdgeReviewd(EdgeReviewed edge);
+
+    void saveEdgeDirected(EdgeDirected edge);
 }

@@ -1,10 +1,13 @@
 package com.example.graph.service;
 
 import com.example.graph.domain.Movie;
+import com.example.graph.domain.Person;
 import com.example.graph.domain.Review;
+import com.example.graph.domain.edge.EdgeDirected;
 import com.example.graph.domain.edge.EdgeMovieToMovie;
 import com.example.graph.domain.edge.EdgeReviewed;
 import com.example.graph.domain.edge.Reviewed;
+import com.example.graph.dto.request.EdgeDirectedReqDto;
 import com.example.graph.dto.request.EdgeReviewedReqDto;
 import com.example.graph.dto.request.MovieTwoCreateReqDto;
 import com.example.graph.mapper.EdgeMapper;
@@ -56,22 +59,21 @@ public class EdgeServiceImpl implements EdgeService{
         graph.addEdge(review, movie, edge1);
 
         edgeMapper.saveEdgeReviewd(edge1); // 많으면 list로 줘야할듯
-        Object result = edge1;
-//        List<Object> listResult = new ArrayList<>();
-//        listResult.add(graph.getAllEdges(review, movie));
-//        listResult.add(graph.getEdge(review, movie));
         return graph.getAllEdges(review, movie);
-//        return graph;
-//        Vertex review = new Vertex<Review>(reqDto.getEdgeName(), reqDto.getReviewCreateReqDto());
-//        Vertex movie = new Vertex<Movie>(reqDto.getEdgeName(), reqDto.getMovieCreateReqDto());
-
-//        Vertex<Review> reviewV = new Vertex<Review>(reqDto.getEdgeName(), reqDto.getReviewCreateReqDto());
-//        SimpleDirectedGraph<Vertex,Reviewed> graph = new SimpleDirectedGraph<Vertex, Reviewed>(Reviewed.class);
-//        graph.addVertex(review);
-//        graph.addVertex(movie);
-
-//        Reviewed edge1 = new Reviewed(review, movie);
-//        graph.addEdge(edge1.getReview(), edge1.getMovie()), edge1);
     }
 
+    public Object createEdgeDirected(EdgeDirectedReqDto reqDto){
+        Person person = new Person(reqDto.getPersonCreateReqDto());
+        Movie movie = new Movie(reqDto.getMovieCreateReqDto());
+
+        SimpleDirectedGraph<Object, EdgeDirected> graph = new SimpleDirectedGraph<Object, EdgeDirected>(EdgeDirected.class);
+        graph.addVertex(person);
+        graph.addVertex(movie);
+
+        EdgeDirected edge = new EdgeDirected(person, movie);
+        graph.addEdge(person, movie, edge);
+
+        edgeMapper.saveEdgeDirected(edge);
+        return graph.getAllEdges(person, movie);
+    }
 }
