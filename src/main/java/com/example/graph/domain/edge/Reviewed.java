@@ -2,7 +2,6 @@ package com.example.graph.domain.edge;
 
 import com.example.graph.domain.Movie;
 import com.example.graph.domain.Review;
-import com.example.graph.dto.request.EdgeCreateReqDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

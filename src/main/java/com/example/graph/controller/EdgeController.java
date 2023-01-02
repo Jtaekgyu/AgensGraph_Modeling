@@ -1,7 +1,7 @@
 package com.example.graph.controller;
 
 import com.example.graph.controller.response.Response;
-import com.example.graph.dto.request.EdgeCreateReqDto;
+import com.example.graph.dto.request.EdgeReviewedReqDto;
 import com.example.graph.dto.request.MovieTwoCreateReqDto;
 import com.example.graph.service.EdgeService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ public class EdgeController {
     private final EdgeService edgeService;
 
     @PostMapping("/create")
-    public Response<?> setEdge (@RequestBody EdgeCreateReqDto reqDto){
+    public Response<?> setEdge (@RequestBody EdgeReviewedReqDto reqDto){
         edgeService.createEdge(reqDto);
         return null;
     }
@@ -27,7 +27,7 @@ public class EdgeController {
     }
 
     @PostMapping("/CreateReviewToMovie")
-    public Response<?> createReviewToMovie(@RequestBody EdgeCreateReqDto reqDto){
+    public Response<?> createReviewToMovie(@RequestBody EdgeReviewedReqDto reqDto){
         Object result = edgeService.createReviewToMovie(reqDto);
         return Response.success(result);
     }

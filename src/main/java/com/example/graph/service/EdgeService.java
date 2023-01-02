@@ -1,11 +1,11 @@
 package com.example.graph.service;
 
-import com.example.graph.dto.request.EdgeCreateReqDto;
+import com.example.graph.dto.request.EdgeReviewedReqDto;
 import com.example.graph.dto.request.MovieTwoCreateReqDto;
 
 public interface EdgeService {
-    void createEdge(EdgeCreateReqDto reqDto);
+    void createEdge(EdgeReviewedReqDto reqDto);
     Object createMovieToMovie(MovieTwoCreateReqDto reqDto);
-    Object createReviewToMovie(EdgeCreateReqDto reqDto);
+    Object createReviewToMovie(EdgeReviewedReqDto reqDto);
 
 }

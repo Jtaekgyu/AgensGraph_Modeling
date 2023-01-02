@@ -5,18 +5,13 @@ import com.example.graph.domain.Review;
 import com.example.graph.domain.edge.EdgeMovieToMovie;
 import com.example.graph.domain.edge.EdgeReviewed;
 import com.example.graph.domain.edge.Reviewed;
-import com.example.graph.domain.Vertex;
-import com.example.graph.dto.request.EdgeCreateReqDto;
-import com.example.graph.dto.request.MovieCreateReqDto;
+import com.example.graph.dto.request.EdgeReviewedReqDto;
 import com.example.graph.dto.request.MovieTwoCreateReqDto;
 import com.example.graph.mapper.EdgeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jgrapht.graph.SimpleDirectedGraph;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +20,7 @@ public class EdgeServiceImpl implements EdgeService{
 
     private final EdgeMapper edgeMapper;
 
-    public void createEdge(EdgeCreateReqDto reqDto){
+    public void createEdge(EdgeReviewedReqDto reqDto){
         Review review = new Review(reqDto.getReviewCreateReqDto());
         Movie movie = new Movie(reqDto.getMovieCreateReqDto());
         Reviewed reviewed = new Reviewed(review, movie);
@@ -49,7 +44,7 @@ public class EdgeServiceImpl implements EdgeService{
         return graph.getAllEdges(movie1, movie2);
     }
 
-    public Object createReviewToMovie(EdgeCreateReqDto reqDto){
+    public Object createReviewToMovie(EdgeReviewedReqDto reqDto){
         Review review = new Review(reqDto.getReviewCreateReqDto());
         Movie movie = new Movie(reqDto.getMovieCreateReqDto());
 
