@@ -22,14 +22,14 @@ public class EdgeServiceImpl implements EdgeService{
 
     public void createEdge(EdgeReviewedReqDto reqDto){
         Review review = new Review(reqDto.getReviewCreateReqDto());
-        Movie movie = new Movie(reqDto.getMovieCreateReqDto());
+        Movie movie = new Movie(reqDto.getMovieReqDto());
         Reviewed reviewed = new Reviewed(review, movie);
         edgeMapper.saveEdge(reviewed);
     }
 
     public Object createMovieToMovie(MovieTwoCreateReqDto reqDto){
-        Movie movie1 = new Movie(reqDto.getMovieCreateReqDto1());
-        Movie movie2 = new Movie(reqDto.getMovieCreateReqDto2());
+        Movie movie1 = new Movie(reqDto.getMovieReqDto1());
+        Movie movie2 = new Movie(reqDto.getMovieReqDto2());
 
         SimpleDirectedGraph<Movie, EdgeMovieToMovie> graph = new SimpleDirectedGraph<Movie, EdgeMovieToMovie>(EdgeMovieToMovie.class);
         graph.addVertex(movie1);
@@ -46,7 +46,7 @@ public class EdgeServiceImpl implements EdgeService{
 
     public Object createReviewToMovie(EdgeReviewedReqDto reqDto){
         Review review = new Review(reqDto.getReviewCreateReqDto());
-        Movie movie = new Movie(reqDto.getMovieCreateReqDto());
+        Movie movie = new Movie(reqDto.getMovieReqDto());
 
         SimpleDirectedGraph<Object, EdgeReviewed> graph = new SimpleDirectedGraph<Object, EdgeReviewed>(EdgeReviewed.class);
         graph.addVertex(review);
@@ -61,7 +61,7 @@ public class EdgeServiceImpl implements EdgeService{
 
     public Object createEdgePersonToMovie(EdgePtoMReqDto reqDto){
         Person person = new Person(reqDto.getPersonReqDto());
-        Movie movie = new Movie(reqDto.getMovieCreateReqDto());
+        Movie movie = new Movie(reqDto.getMovieReqDto());
 
         SimpleDirectedGraph<Object, EdgePersonToMovie> graph = new SimpleDirectedGraph<Object, EdgePersonToMovie>(EdgePersonToMovie.class);
         graph.addVertex(person);

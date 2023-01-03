@@ -1,7 +1,7 @@
 package com.example.graph.mapper;
 
 import com.example.graph.domain.Movie;
-import com.example.graph.dto.request.MovieObjectReqDto;
+import com.example.graph.dto.request.MovieReqDto;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public interface MovieMapper {
 
     List<Movie> findByName(String name);
 
-    List<Movie> findAllByObject(MovieObjectReqDto reqDto);
+    List<Movie> findAllByObject(MovieReqDto reqDto);
 
     Integer deleteByName(String name);
 }

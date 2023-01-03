@@ -1,8 +1,7 @@
 package com.example.graph.controller;
 
 import com.example.graph.controller.response.Response;
-import com.example.graph.dto.request.MovieCreateReqDto;
-import com.example.graph.dto.request.MovieObjectReqDto;
+import com.example.graph.dto.request.MovieReqDto;
 import com.example.graph.dto.response.MovieResDto;
 import com.example.graph.service.MovieService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class MovieController {
     private final MovieService movieService;
 
     @PostMapping("/create")
-    public Response<?> create(@RequestBody MovieCreateReqDto reqDto){
+    public Response<?> create(@RequestBody MovieReqDto reqDto){
         MovieResDto resDto = movieService.create(reqDto);
         return Response.success(resDto);
     }
@@ -36,7 +35,7 @@ public class MovieController {
     }
 
     @GetMapping("/Object")
-    public Response<List<MovieResDto>> findAllByObject(@RequestBody MovieObjectReqDto reqDto){
+    public Response<List<MovieResDto>> findAllByObject(@RequestBody MovieReqDto reqDto){
         List<MovieResDto> resDtoList = movieService.findAllByObject(reqDto);
         return Response.success(resDtoList);
     }

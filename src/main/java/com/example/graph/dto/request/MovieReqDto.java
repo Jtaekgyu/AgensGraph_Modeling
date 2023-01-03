@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class MovieCreateReqDto {
+public class MovieReqDto {
 
     String name;
 

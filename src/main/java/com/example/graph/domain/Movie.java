@@ -1,6 +1,6 @@
 package com.example.graph.domain;
 
-import com.example.graph.dto.request.MovieCreateReqDto;
+import com.example.graph.dto.request.MovieReqDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ public class Movie {
 
     private Integer rating;
 
-    public Movie(MovieCreateReqDto reqDto){
+    public Movie(MovieReqDto reqDto){
         this.name = reqDto.getName();
         this.rating = reqDto.getRating();
     }
