@@ -47,9 +47,9 @@ public class ReviewController {
     }
 
     @DeleteMapping("/delete/{reviewer}")
-    public Response<Void> deleteByReviewer(@PathVariable String reviewer){
-        reviewService.deleteByReviewer(reviewer);
-        return Response.success();
+    public Response<Integer> deleteByReviewer(@PathVariable String reviewer){
+        Integer result = reviewService.deleteByReviewer(reviewer);
+        return Response.success(result);
     }
 
 }
