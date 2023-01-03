@@ -16,5 +16,5 @@ public interface MovieService {
 
     List<MovieResDto> findAllByObject(MovieObjectReqDto reqDto);
 
-    void deleteByName(String name);
+    Integer deleteByName(String name);
 }

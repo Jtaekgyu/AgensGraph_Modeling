@@ -57,8 +57,9 @@ public class ReviewServiceImpl implements ReviewService{
         return reviewResDtoList;
     }
 
-    public void deleteByReviewer(String reviewer){
-        reviewMapper.deleteByReviewer(reviewer);
+    public Integer deleteByReviewer(String reviewer){
+        Integer result = reviewMapper.deleteByReviewer(reviewer);
+        return result;
     }
 
 }

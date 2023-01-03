@@ -42,9 +42,9 @@ public class MovieController {
     }
 
     @DeleteMapping("/delete/{name}")
-    public Response<Void> deleteByName(@PathVariable String name){
-        movieService.deleteByName(name);
-        return Response.success();
+    public Response<Integer> deleteByName(@PathVariable String name){
+        Integer result =  movieService.deleteByName(name);
+        return Response.success(result);
     }
 
 }

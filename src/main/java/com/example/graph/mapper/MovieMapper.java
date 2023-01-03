@@ -17,5 +17,5 @@ public interface MovieMapper {
 
     List<Movie> findAllByObject(MovieObjectReqDto reqDto);
 
-    void deleteByName(String name);
+    Integer deleteByName(String name);
 }

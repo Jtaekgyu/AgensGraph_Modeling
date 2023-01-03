@@ -20,6 +20,6 @@ public interface ReviewMapper {
 
     List<Review> findAllByObject(ReviewFindAllReqDto reqDto);
 
-    void deleteByReviewer(String reviewer);
-    
+    Integer deleteByReviewer(String reviewer);
+
 }

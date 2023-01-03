@@ -53,7 +53,8 @@ public class MovieServiceImpl implements MovieService{
         return movieResDtoList;
     }
 
-    public void deleteByName(String name){
-        movieMapper.deleteByName(name);
+    public Integer deleteByName(String name){
+        Integer result = movieMapper.deleteByName(name);
+        return result;
     }
 }

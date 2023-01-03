@@ -18,6 +18,6 @@ public interface ReviewService {
 
     List<ReviewResDto> findAllByObject(ReviewFindAllReqDto reqDto);
 
-    void deleteByReviewer(String reviewer);
+    Integer deleteByReviewer(String reviewer);
 
 }
