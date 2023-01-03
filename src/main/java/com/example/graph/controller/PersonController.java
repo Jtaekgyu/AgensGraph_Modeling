@@ -1,11 +1,9 @@
 package com.example.graph.controller;
 
 import com.example.graph.controller.response.Response;
-import com.example.graph.dto.request.PersonCreateReqDto;
-import com.example.graph.dto.request.PersonObjectReqDto;
+import com.example.graph.dto.request.PersonReqDto;
 import com.example.graph.dto.request.PersonUpdateReqDto;
 import com.example.graph.dto.response.PersonResDto;
-import com.example.graph.dto.response.ReviewResDto;
 import com.example.graph.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +18,7 @@ public class PersonController {
     private final PersonService personService;
 
     @PostMapping("/create")
-    public Response<?> create(@RequestBody PersonCreateReqDto reqDto){
+    public Response<?> create(@RequestBody PersonReqDto reqDto){
         PersonResDto resDto = personService.create(reqDto);
         return Response.success(resDto);
     }
@@ -32,7 +30,7 @@ public class PersonController {
     }
 
     @GetMapping("/Object")
-    public Response<List<PersonResDto>> findAllByObject(@RequestBody PersonObjectReqDto reqDto){
+    public Response<List<PersonResDto>> findAllByObject(@RequestBody PersonReqDto reqDto){
         List<PersonResDto> resDtoList = personService.findAllByObject(reqDto);
         return Response.success(resDtoList);
     }
@@ -44,7 +42,7 @@ public class PersonController {
     }
 
     @DeleteMapping("/object")
-    public Response<Integer> deleteByObject(@RequestBody PersonObjectReqDto reqDto){
+    public Response<Integer> deleteByObject(@RequestBody PersonReqDto reqDto){
         Integer result = personService.deleteByObject(reqDto);
         return Response.success(result);
     }

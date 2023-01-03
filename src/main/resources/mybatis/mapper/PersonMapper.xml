@@ -22,7 +22,7 @@
         SET P.name = #{reqDto2.name}, P.born = #{reqDto2.born}, P.job = #{reqDto2.job};
     </update>
     
-    <delete id="deleteByObject" parameterType="com.example.graph.dto.request.PersonObjectReqDto">
+    <delete id="deleteByObject" parameterType="com.example.graph.dto.request.PersonReqDto">
         MATCH (P:Person{name: #{name}, born:#{born}, job:#{job} } )
         DETACH DELETE(P);
     </delete>

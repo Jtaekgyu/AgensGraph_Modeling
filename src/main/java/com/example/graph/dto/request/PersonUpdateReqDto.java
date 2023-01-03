@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public class PersonUpdateReqDto {
 
-    PersonObjectReqDto reqDto1;
+    PersonReqDto reqDto1;
 
-    PersonObjectReqDto reqDto2;
+    PersonReqDto reqDto2;
 }

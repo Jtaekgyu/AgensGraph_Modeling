@@ -60,7 +60,7 @@ public class EdgeServiceImpl implements EdgeService{
     }
 
     public Object createEdgePersonToMovie(EdgePtoMReqDto reqDto){
-        Person person = new Person(reqDto.getPersonCreateReqDto());
+        Person person = new Person(reqDto.getPersonReqDto());
         Movie movie = new Movie(reqDto.getMovieCreateReqDto());
 
         SimpleDirectedGraph<Object, EdgePersonToMovie> graph = new SimpleDirectedGraph<Object, EdgePersonToMovie>(EdgePersonToMovie.class);

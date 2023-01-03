@@ -1,9 +1,7 @@
 package com.example.graph.service;
 
-import com.example.graph.controller.response.Response;
 import com.example.graph.domain.Person;
-import com.example.graph.dto.request.PersonCreateReqDto;
-import com.example.graph.dto.request.PersonObjectReqDto;
+import com.example.graph.dto.request.PersonReqDto;
 import com.example.graph.dto.request.PersonUpdateReqDto;
 import com.example.graph.dto.response.PersonResDto;
 import com.example.graph.mapper.PersonMapper;
@@ -19,7 +17,7 @@ public class PersonServiceImpl implements PersonService{
 
     private final PersonMapper personMapper;
 
-    public PersonResDto create(PersonCreateReqDto reqDto){
+    public PersonResDto create(PersonReqDto reqDto){
         Person person = new Person(reqDto);
         personMapper.save(person);
         PersonResDto resDto = new PersonResDto(person);
@@ -35,7 +33,7 @@ public class PersonServiceImpl implements PersonService{
         return personResDtoList;
     }
 
-    public List<PersonResDto> findAllByObject(PersonObjectReqDto reqDto){
+    public List<PersonResDto> findAllByObject(PersonReqDto reqDto){
         List<PersonResDto> personResDtoList = new ArrayList<>();
         List<Person> personList = personMapper.findAllByObject(reqDto);
         for(Person tmpPerson : personList){
@@ -49,7 +47,7 @@ public class PersonServiceImpl implements PersonService{
         return result;
     }
 
-    public Integer deleteByObject(PersonObjectReqDto reqDto){
+    public Integer deleteByObject(PersonReqDto reqDto){
         Integer result = personMapper.deleteByObject(reqDto);
         return result;
     }

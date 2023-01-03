@@ -1,16 +1,12 @@
 package com.example.graph.dto.request;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
-public class PersonCreateReqDto {
-
+public class PersonReqDto {
     String name;
 
     Integer born;
 
     String job;
-
 }

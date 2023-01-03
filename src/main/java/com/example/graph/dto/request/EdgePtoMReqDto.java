@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public class EdgePtoMReqDto {
 
-    PersonCreateReqDto personCreateReqDto;
+    PersonReqDto personReqDto;
     MovieCreateReqDto movieCreateReqDto;
     String edgeName;
 }

@@ -1,7 +1,7 @@
 package com.example.graph.mapper;
 
 import com.example.graph.domain.Person;
-import com.example.graph.dto.request.PersonObjectReqDto;
+import com.example.graph.dto.request.PersonReqDto;
 import com.example.graph.dto.request.PersonUpdateReqDto;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,9 +14,9 @@ public interface PersonMapper {
 
     List<Person> findAll();
 
-    List<Person> findAllByObject(PersonObjectReqDto reqDto);
+    List<Person> findAllByObject(PersonReqDto reqDto);
 
     Integer updateByObject(PersonUpdateReqDto reqDto);
 
-    Integer deleteByObject(PersonObjectReqDto reqDto);
+    Integer deleteByObject(PersonReqDto reqDto);
 }
