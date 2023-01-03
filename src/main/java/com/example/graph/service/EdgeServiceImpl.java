@@ -55,10 +55,10 @@ public class EdgeServiceImpl implements EdgeService{
         graph.addVertex(review);
         graph.addVertex(movie);
 
-        EdgeReviewed edge1 = new EdgeReviewed(review, movie);
-        graph.addEdge(review, movie, edge1);
+        EdgeReviewed edge = new EdgeReviewed(review, movie, reqDto.getEdgeName());
+        graph.addEdge(review, movie, edge);
 
-        edgeMapper.saveEdgeReviewd(edge1); // 많으면 list로 줘야할듯
+        edgeMapper.saveEdgeReviewd(edge); // 많으면 list로 줘야할듯
         return graph.getAllEdges(review, movie);
     }
 
@@ -70,7 +70,7 @@ public class EdgeServiceImpl implements EdgeService{
         graph.addVertex(person);
         graph.addVertex(movie);
 
-        EdgeDirected edge = new EdgeDirected(person, movie);
+        EdgeDirected edge = new EdgeDirected(person, movie, reqDto.getEdgeName());
         graph.addEdge(person, movie, edge);
 
         edgeMapper.saveEdgeDirected(edge);

@@ -10,13 +10,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class EdgeReviewed {
 
     private Review review;
     private Movie movie;
+    private String edgeName;
 
-    public EdgeReviewed(Review review, Movie movie){
-        this.review = review;
-        this.movie = movie;
-    }
 }

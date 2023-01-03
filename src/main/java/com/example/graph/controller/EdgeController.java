@@ -34,7 +34,7 @@ public class EdgeController {
     }
 
     @PostMapping("/CreateDirected")
-    public Response<?> createDitected(@RequestBody EdgeDirectedReqDto reqDto){
+    public Response<?> createDirected(@RequestBody EdgeDirectedReqDto reqDto){
         Object result = edgeService.createEdgeDirected(reqDto);
         return Response.success(result);
     }

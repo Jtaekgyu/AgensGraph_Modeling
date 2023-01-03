@@ -13,4 +13,6 @@ public class EdgeDirected {
 
     private Movie movie;
 
+    String edgeName;
+
 }

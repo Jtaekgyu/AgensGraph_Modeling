@@ -7,4 +7,5 @@ public class EdgeDirectedReqDto {
 
     PersonCreateReqDto personCreateReqDto;
     MovieCreateReqDto movieCreateReqDto;
+    String edgeName;
 }
