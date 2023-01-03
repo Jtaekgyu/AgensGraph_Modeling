@@ -1,7 +1,7 @@
 package com.example.graph.controller;
 
 import com.example.graph.controller.response.Response;
-import com.example.graph.dto.request.EdgeDirectedReqDto;
+import com.example.graph.dto.request.EdgePtoMReqDto;
 import com.example.graph.dto.request.EdgeReviewedReqDto;
 import com.example.graph.dto.request.MovieTwoCreateReqDto;
 import com.example.graph.service.EdgeService;
@@ -33,9 +33,9 @@ public class EdgeController {
         return Response.success(result);
     }
 
-    @PostMapping("/CreateDirected")
-    public Response<?> createDirected(@RequestBody EdgeDirectedReqDto reqDto){
-        Object result = edgeService.createEdgeDirected(reqDto);
+    @PostMapping("/CreatePersonToMovie")
+    public Response<?> createDirected(@RequestBody EdgePtoMReqDto reqDto){
+        Object result = edgeService.createEdgePersonToMovie(reqDto);
         return Response.success(result);
     }
 

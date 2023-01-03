@@ -1,9 +1,6 @@
 package com.example.graph.mapper;
 
-import com.example.graph.domain.edge.EdgeDirected;
-import com.example.graph.domain.edge.EdgeMovieToMovie;
-import com.example.graph.domain.edge.EdgeReviewed;
-import com.example.graph.domain.edge.Reviewed;
+import com.example.graph.domain.edge.*;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -15,5 +12,6 @@ public interface EdgeMapper {
 
     void saveEdgeReviewd(EdgeReviewed edge);
 
-    void saveEdgeDirected(EdgeDirected edge);
+    void saveEdgePersonToMovie(EdgePersonToMovie edge);
+
 }

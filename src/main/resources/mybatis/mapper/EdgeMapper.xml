@@ -28,7 +28,7 @@
         (R)-[E:${edgeName}]->(M);
     </insert>
     
-    <insert id="saveEdgeDirected" parameterType="com.example.graph.domain.edge.EdgeDirected" useGeneratedKeys="true">
+    <insert id="saveEdgePersonToMovie" parameterType="com.example.graph.domain.edge.EdgePersonToMovie" useGeneratedKeys="true">
         CREATE
         (P:Person { name:#{person.name}, born:#{person.born}, job:#{person.job} } ),
         (M:Movie { name:#{movie.name}, rating:#{movie.rating} } ),

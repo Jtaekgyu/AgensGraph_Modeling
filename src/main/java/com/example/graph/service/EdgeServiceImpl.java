@@ -3,11 +3,8 @@ package com.example.graph.service;
 import com.example.graph.domain.Movie;
 import com.example.graph.domain.Person;
 import com.example.graph.domain.Review;
-import com.example.graph.domain.edge.EdgeDirected;
-import com.example.graph.domain.edge.EdgeMovieToMovie;
-import com.example.graph.domain.edge.EdgeReviewed;
-import com.example.graph.domain.edge.Reviewed;
-import com.example.graph.dto.request.EdgeDirectedReqDto;
+import com.example.graph.domain.edge.*;
+import com.example.graph.dto.request.EdgePtoMReqDto;
 import com.example.graph.dto.request.EdgeReviewedReqDto;
 import com.example.graph.dto.request.MovieTwoCreateReqDto;
 import com.example.graph.mapper.EdgeMapper;
@@ -62,18 +59,19 @@ public class EdgeServiceImpl implements EdgeService{
         return graph.getAllEdges(review, movie);
     }
 
-    public Object createEdgeDirected(EdgeDirectedReqDto reqDto){
+    public Object createEdgePersonToMovie(EdgePtoMReqDto reqDto){
         Person person = new Person(reqDto.getPersonCreateReqDto());
         Movie movie = new Movie(reqDto.getMovieCreateReqDto());
 
-        SimpleDirectedGraph<Object, EdgeDirected> graph = new SimpleDirectedGraph<Object, EdgeDirected>(EdgeDirected.class);
+        SimpleDirectedGraph<Object, EdgePersonToMovie> graph = new SimpleDirectedGraph<Object, EdgePersonToMovie>(EdgePersonToMovie.class);
         graph.addVertex(person);
         graph.addVertex(movie);
 
-        EdgeDirected edge = new EdgeDirected(person, movie, reqDto.getEdgeName());
+        EdgePersonToMovie edge = new EdgePersonToMovie(person, movie, reqDto.getEdgeName());
         graph.addEdge(person, movie, edge);
 
-        edgeMapper.saveEdgeDirected(edge);
+        edgeMapper.saveEdgePersonToMovie(edge);
         return graph.getAllEdges(person, movie);
     }
+
 }

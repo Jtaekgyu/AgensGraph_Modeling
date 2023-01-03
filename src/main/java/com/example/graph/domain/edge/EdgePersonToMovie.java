@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class EdgeDirected {
+public class EdgePersonToMovie {
 
     private Person person;
 
