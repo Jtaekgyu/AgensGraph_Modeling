@@ -12,7 +12,7 @@ public interface ReviewMapper {
 
     void setGraphPath();
 
-    Long save(Review review); // 왜 Long으로 반환했드라?
+    Integer save(Review review);
 
     List<Review> findAll();
 

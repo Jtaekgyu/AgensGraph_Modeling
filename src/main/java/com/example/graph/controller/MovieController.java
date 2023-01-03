@@ -2,6 +2,7 @@ package com.example.graph.controller;
 
 import com.example.graph.controller.response.Response;
 import com.example.graph.dto.request.MovieReqDto;
+import com.example.graph.dto.response.MovieCreateResDto;
 import com.example.graph.dto.response.MovieResDto;
 import com.example.graph.service.MovieService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class MovieController {
 
     @PostMapping("/create")
     public Response<?> create(@RequestBody MovieReqDto reqDto){
-        MovieResDto resDto = movieService.create(reqDto);
+        MovieCreateResDto resDto = movieService.create(reqDto);
         return Response.success(resDto);
     }
 

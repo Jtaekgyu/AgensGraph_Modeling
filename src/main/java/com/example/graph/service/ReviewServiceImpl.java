@@ -3,6 +3,7 @@ package com.example.graph.service;
 import com.example.graph.domain.Review;
 import com.example.graph.dto.request.ReviewCreateReqDto;
 import com.example.graph.dto.request.ReviewFindAllReqDto;
+import com.example.graph.dto.response.ReviewCreateResDto;
 import com.example.graph.dto.response.ReviewResDto;
 import com.example.graph.mapper.ReviewMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,10 +24,10 @@ public class ReviewServiceImpl implements ReviewService{
         reviewMapper.setGraphPath();
     }
 
-    public ReviewResDto create(ReviewCreateReqDto reqDto){
+    public ReviewCreateResDto create(ReviewCreateReqDto reqDto){
         Review review = new Review(reqDto);
         reviewMapper.save(review);
-        ReviewResDto resDto = new ReviewResDto(review);
+        ReviewCreateResDto resDto = new ReviewCreateResDto(review);
         return resDto;
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface MovieMapper {
 
-    void save(Movie movie);
+    Integer save(Movie movie);
 
     List<Movie> findAll();
 

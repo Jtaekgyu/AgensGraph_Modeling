@@ -34,7 +34,7 @@ public class EdgeController {
     }
 
     @PostMapping("/CreatePersonToMovie")
-    public Response<?> createDirected(@RequestBody EdgePtoMReqDto reqDto){
+    public Response<?> CreatePersonToMovie(@RequestBody EdgePtoMReqDto reqDto){
         Object result = edgeService.createEdgePersonToMovie(reqDto);
         return Response.success(result);
     }

@@ -3,6 +3,7 @@ package com.example.graph.controller;
 import com.example.graph.controller.response.Response;
 import com.example.graph.dto.request.ReviewCreateReqDto;
 import com.example.graph.dto.request.ReviewFindAllReqDto;
+import com.example.graph.dto.response.ReviewCreateResDto;
 import com.example.graph.dto.response.ReviewResDto;
 import com.example.graph.service.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class ReviewController {
 
     @PostMapping("/create")
     public Response<?> create(@RequestBody ReviewCreateReqDto reqDto){
-        ReviewResDto resDto = reviewService.create(reqDto);
+        ReviewCreateResDto resDto = reviewService.create(reqDto);
         return Response.success(resDto);
     }
 

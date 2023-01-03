@@ -18,8 +18,11 @@ public class ReviewResDto {
     Integer rating;
 
     public ReviewResDto(Review review){
-        this.reviewer = review.getReviewer();
-        this.review = review.getReview();
-        this.rating =review.getRating();
+        // subString으로 억지로 제거 했는데 바람직하지 않은 방법인듯 하다..
+        this.reviewer = review.getReviewer().substring(1, review.getReviewer().length()-1);
+        this.review = review.getReview().substring(1, review.getReview().length()-1);
+//        this.reviewer = review.getReviewer();
+//        this.review = review.getReview();
+        this.rating = review.getRating();
     }
 }

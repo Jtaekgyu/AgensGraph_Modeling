@@ -15,7 +15,7 @@ public class MovieResDto {
     Integer rating;
 
     public MovieResDto(Movie movie){
-        this.name = movie.getName();
+        this.name = movie.getName().substring(1, movie.getName().length()-1);
         this.rating = movie.getRating();
     }
 }

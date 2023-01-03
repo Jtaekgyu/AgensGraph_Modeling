@@ -2,6 +2,7 @@ package com.example.graph.service;
 
 import com.example.graph.domain.Movie;
 import com.example.graph.dto.request.MovieReqDto;
+import com.example.graph.dto.response.MovieCreateResDto;
 import com.example.graph.dto.response.MovieResDto;
 import com.example.graph.mapper.MovieMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,10 +19,10 @@ public class MovieServiceImpl implements MovieService{
 
     private final MovieMapper movieMapper;
 
-    public MovieResDto create(MovieReqDto reqDto){
+    public MovieCreateResDto create(MovieReqDto reqDto){
         Movie movie = new Movie(reqDto);
         movieMapper.save(movie);
-        MovieResDto resDto = new MovieResDto(movie);
+        MovieCreateResDto resDto = new MovieCreateResDto(movie);
         return resDto;
     }
 
