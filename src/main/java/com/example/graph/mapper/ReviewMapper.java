@@ -21,6 +21,5 @@ public interface ReviewMapper {
     List<Review> findAllByObject(ReviewFindAllReqDto reqDto);
 
     void deleteByReviewer(String reviewer);
-
-    Review findById(Object vId);
+    
 }

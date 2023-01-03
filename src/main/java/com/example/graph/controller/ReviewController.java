@@ -28,7 +28,7 @@ public class ReviewController {
         return Response.success(resDto);
     }
 
-    @GetMapping // 위에 /review 있음
+    @GetMapping
     public Response<List<ReviewResDto>> findAll(){
         List<ReviewResDto> resDtoList = reviewService.findAll();
         return Response.success(resDtoList);
@@ -52,9 +52,4 @@ public class ReviewController {
         return Response.success();
     }
 
-    @GetMapping("findById/{vId}")
-    public Response<ReviewResDto> matchById(@PathVariable Object vId){
-        ReviewResDto resDto = reviewService.findById(vId);
-        return Response.success(resDto);
-    }
 }

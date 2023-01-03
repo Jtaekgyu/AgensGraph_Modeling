@@ -61,9 +61,4 @@ public class ReviewServiceImpl implements ReviewService{
         reviewMapper.deleteByReviewer(reviewer);
     }
 
-    public ReviewResDto findById(Object vId){
-         Review review = reviewMapper.findById(vId);
-         ReviewResDto resDto = new ReviewResDto(review);
-         return resDto;
-    }
 }

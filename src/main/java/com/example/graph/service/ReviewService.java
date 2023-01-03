@@ -20,5 +20,4 @@ public interface ReviewService {
 
     void deleteByReviewer(String reviewer);
 
-    ReviewResDto findById(Object vId);
 }
