@@ -1,7 +1,10 @@
 package com.example.graph.mapper;
 
 import com.example.graph.domain.edge.*;
+import com.example.graph.dto.request.VEVReqDto;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface EdgeMapper {
@@ -14,4 +17,7 @@ public interface EdgeMapper {
 
     void saveEdgePersonToMovie(EdgePersonToMovie edge);
 
+    void saveEdgePersonActedInMovie(GeneratorPerActMov generator);
+
+    List<Object> findAllVEV(VEVReqDto reqDto);
 }

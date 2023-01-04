@@ -1,17 +1,16 @@
 package com.example.graph.service;
 
-import com.example.graph.domain.Movie;
-import com.example.graph.domain.Person;
-import com.example.graph.domain.Review;
+import com.example.graph.domain.*;
 import com.example.graph.domain.edge.*;
-import com.example.graph.dto.request.EdgePtoMReqDto;
-import com.example.graph.dto.request.EdgeReviewedReqDto;
-import com.example.graph.dto.request.MovieTwoCreateReqDto;
+import com.example.graph.dto.request.*;
 import com.example.graph.mapper.EdgeMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jgrapht.graph.SimpleDirectedGraph;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -71,7 +70,54 @@ public class EdgeServiceImpl implements EdgeService{
         graph.addEdge(person, movie, edge);
 
         edgeMapper.saveEdgePersonToMovie(edge);
-        return graph.getAllEdges(person, movie);
+        return graph.edgesOf(person);
+//        return graph.vertexSet();
+//        return graph.edgeSet(); // 아래꺼랑 똑같다.
+//        return graph.getAllEdges(person, movie);
     }
 
+    public Object CreatePersonActedInMovie(EdgePActMReqDto reqDto){
+        Person person = new Person(reqDto.getPersonReqDto());
+        Movie movie = new Movie(reqDto.getMovieReqDto());
+        EdgeActedIn edge = new EdgeActedIn(reqDto.getEdgeAppearedReqDto());
+
+//        SimpleDirectedGraph<Object, GeneratorPerActMov> graph = new SimpleDirectedGraph<Object, GeneratorPerActMov>(GeneratorPerActMov.class);
+        SimpleDirectedGraph<Object, EdgeActedIn> graph = new SimpleDirectedGraph<Object, EdgeActedIn>(EdgeActedIn.class);
+        graph.addVertex(person);
+        graph.addVertex(movie);
+
+        GeneratorPerActMov generator = new GeneratorPerActMov(person, edge, movie);
+        graph.addEdge(person, movie, edge);
+//        graph.addEdge(person, movie, generator);
+        edgeMapper.saveEdgePersonActedInMovie(generator);
+
+        List<Object> resultList = new ArrayList<>();
+        resultList.add(graph.vertexSet());
+        resultList.add(graph.edgeSet());
+        return resultList;
+        // generator를 edge로 사용시 반환
+//        return graph.vertexSet(); // vertex들
+//        return graph.edgeSet(); // edge들
+    }
+
+    public List<Object> findVertexEdgeVertex(VEVReqDto reqDto){
+        List<Object> resObjList = new ArrayList<>();
+        List<Object> tmpObject = edgeMapper.findAllVEV(reqDto);
+        for(Object tmpObj : tmpObject ){
+            resObjList.add(tmpObj);
+        }
+        return resObjList;
+    }
+
+    // 현재 person과 movie가 implements Node 하지 않았기 때문에 돌아가지는 않는다.
+    /*public Object EdgePersonToMovieByIfc(EdgePtoMReqDto reqDto){
+        Vperson vperson = new Vperson(reqDto.getPersonReqDto());
+        Vmovie vmovie = new Vmovie(reqDto.getMovieReqDto());
+
+        SimpleDirectedGraph<Vertex<Node>, EdgePersonToMovie> graph
+                = new SimpleDirectedGraph<Vertex<Node>, EdgePersonToMovie>(EdgePersonToMovie.class);
+        Vertex<Node> vertex = new Vertex(vperson);
+        graph.addEdge(vertex);
+        graph.addVertex()
+    }*/
 }

@@ -1,9 +1,7 @@
 package com.example.graph.controller;
 
 import com.example.graph.controller.response.Response;
-import com.example.graph.dto.request.EdgePtoMReqDto;
-import com.example.graph.dto.request.EdgeReviewedReqDto;
-import com.example.graph.dto.request.MovieTwoCreateReqDto;
+import com.example.graph.dto.request.*;
 import com.example.graph.service.EdgeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -36,6 +34,18 @@ public class EdgeController {
     @PostMapping("/CreatePersonToMovie")
     public Response<?> CreatePersonToMovie(@RequestBody EdgePtoMReqDto reqDto){
         Object result = edgeService.createEdgePersonToMovie(reqDto);
+        return Response.success(result);
+    }
+
+    @PostMapping("/CreatePersonActedInMovie")
+    public Response<?> CreatePersonActedInMovie(@RequestBody EdgePActMReqDto reqDto){
+        Object result = edgeService.CreatePersonActedInMovie(reqDto);
+        return Response.success(result);
+    }
+
+    @GetMapping("/vev")
+    public Response<?> findVertexEdgeVertex(@RequestBody VEVReqDto reqDto){
+        Object result = edgeService.findVertexEdgeVertex(reqDto);
         return Response.success(result);
     }
 
