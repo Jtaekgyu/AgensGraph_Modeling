@@ -5,6 +5,6 @@ import lombok.Getter;
 @Getter
 public class EdgeAppearedReqDto {
 
-    String role;
+    private String role;
 
 }

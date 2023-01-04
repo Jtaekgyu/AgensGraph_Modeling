@@ -77,7 +77,7 @@ public class EdgeServiceImpl implements EdgeService{
         return graph.edgeSet();
     }
 
-    public Object CreatePersonActedInMovie(EdgePActMReqDto reqDto){
+    public Object createPersonActedInMovie(EdgePActMReqDto reqDto){
         Person person = new Person(reqDto.getPersonReqDto());
         Movie movie = new Movie(reqDto.getMovieReqDto());
         EdgeActedIn edge = new EdgeActedIn(reqDto.getEdgeAppearedReqDto());

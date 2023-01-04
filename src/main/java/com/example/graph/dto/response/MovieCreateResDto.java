@@ -6,9 +6,9 @@ import lombok.Getter;
 @Getter
 public class MovieCreateResDto {
 
-    String name;
+    private String name;
 
-    Integer rating;
+    private Integer rating;
 
     public MovieCreateResDto(Movie movie){
         this.name = movie.getName();

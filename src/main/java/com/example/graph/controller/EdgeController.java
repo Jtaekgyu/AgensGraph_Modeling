@@ -39,7 +39,7 @@ public class EdgeController {
 
     @PostMapping("/person-actedin-movie")
     public Response<?> createPersonActedInMovie(@RequestBody EdgePActMReqDto reqDto){
-        Object result = edgeService.CreatePersonActedInMovie(reqDto);
+        Object result = edgeService.createPersonActedInMovie(reqDto);
         return Response.success(result);
     }
 

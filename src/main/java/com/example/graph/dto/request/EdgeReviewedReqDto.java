@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 public class EdgeReviewedReqDto {
-    ReviewCreateReqDto reviewCreateReqDto;
-    MovieReqDto movieReqDto;
-    String edgeName; // 지금은 Request형식만 맞춰주고 굳이 필요없음 고려하자
+    private ReviewCreateReqDto reviewCreateReqDto;
+    private MovieReqDto movieReqDto;
+    private String edgeName; // 지금은 Request형식만 맞춰주고 굳이 필요없음 고려하자
 }

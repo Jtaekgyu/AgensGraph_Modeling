@@ -6,11 +6,11 @@ import lombok.Getter;
 @Getter
 public class ReviewCreateResDto {
 
-    String reviewer;
+    private String reviewer;
 
-    String review;
+    private String review;
 
-    Integer rating;
+    private Integer rating;
 
     public ReviewCreateResDto(Review review){
         this.reviewer = review.getReviewer();

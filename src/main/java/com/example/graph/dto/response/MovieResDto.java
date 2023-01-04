@@ -10,9 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class MovieResDto {
 
-    String name;
+    private String name;
 
-    Integer rating;
+    private Integer rating;
 
     public MovieResDto(Movie movie){
         this.name = movie.getName().substring(1, movie.getName().length()-1);

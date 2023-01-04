@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReviewFindAllReqDto {
 
-    String reviewer;
+    private String reviewer;
 
-    String review;
+    private String review;
 
-    Integer rating;
+    private Integer rating;
 }

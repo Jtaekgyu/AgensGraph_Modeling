@@ -4,9 +4,9 @@ import lombok.Getter;
 
 @Getter
 public class PersonReqDto {
-    String name;
+    private String name;
 
-    Integer born;
+    private Integer born;
 
-    String job;
+    private String job;
 }

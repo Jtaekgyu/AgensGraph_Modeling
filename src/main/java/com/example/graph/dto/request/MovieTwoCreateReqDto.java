@@ -7,6 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MovieTwoCreateReqDto {
 
-    MovieReqDto movieReqDto1;
-    MovieReqDto movieReqDto2;
+    private MovieReqDto movieReqDto1;
+    private MovieReqDto movieReqDto2;
 }

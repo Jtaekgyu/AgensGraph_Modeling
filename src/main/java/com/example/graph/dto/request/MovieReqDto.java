@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @Getter
 public class MovieReqDto {
 
-    String name;
+    private String name;
 
-    Integer rating;
+    private Integer rating;
 }

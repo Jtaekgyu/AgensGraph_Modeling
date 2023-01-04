@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 @Getter
 public class ReviewCreateReqDto {
 
-    String reviewer;
+    private String reviewer;
 
-    String review;
+    private String review;
 
-    Integer rating;
+    private Integer rating;
 
 }

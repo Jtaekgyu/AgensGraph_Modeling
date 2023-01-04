@@ -11,11 +11,11 @@ import lombok.Setter;
 public class ReviewResDto {
 
 //    String prop;
-    String reviewer;
+    private String reviewer;
 
-    String review;
+    private String review;
 
-    Integer rating;
+    private Integer rating;
 
     public ReviewResDto(Review review){
         // subString으로 억지로 제거 했는데 바람직하지 않은 방법인듯 하다..

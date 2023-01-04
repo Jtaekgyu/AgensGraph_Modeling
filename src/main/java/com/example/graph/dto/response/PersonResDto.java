@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PersonResDto {
 
-    String name;
+    private String name;
 
-    Integer born;
+    private Integer born;
 
-    String job;
+    private String job;
 
     public PersonResDto(Person person){
         this.name = person.getName().substring(1, person.getName().length()-1);

@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public class EdgePActMReqDto {
 
-    PersonReqDto personReqDto;
-    MovieReqDto movieReqDto;
-    EdgeAppearedReqDto edgeAppearedReqDto;
+    private PersonReqDto personReqDto;
+    private MovieReqDto movieReqDto;
+    private EdgeAppearedReqDto edgeAppearedReqDto;
 }
