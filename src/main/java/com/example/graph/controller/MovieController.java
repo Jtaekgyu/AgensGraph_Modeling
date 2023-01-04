@@ -17,8 +17,8 @@ public class MovieController {
 
     private final MovieService movieService;
 
-    @PostMapping("/create")
-    public Response<?> create(@RequestBody MovieReqDto reqDto){
+    @PostMapping
+    public Response<MovieCreateResDto> create(@RequestBody MovieReqDto reqDto){
         MovieCreateResDto resDto = movieService.create(reqDto);
         return Response.success(resDto);
     }
@@ -29,19 +29,19 @@ public class MovieController {
         return Response.success(resDtoList);
     }
 
-    @GetMapping("/findByName/{name}")
+    @GetMapping("/name/{name}")
     public Response<List<MovieResDto>> findByName(@PathVariable String name){
         List<MovieResDto> resDtoList = movieService.findByName(name);
         return Response.success(resDtoList);
     }
 
-    @GetMapping("/Object")
+    @GetMapping("/object")
     public Response<List<MovieResDto>> findAllByObject(@RequestBody MovieReqDto reqDto){
         List<MovieResDto> resDtoList = movieService.findAllByObject(reqDto);
         return Response.success(resDtoList);
     }
 
-    @DeleteMapping("/delete/{name}")
+    @DeleteMapping("/name/{name}")
     public Response<Integer> deleteByName(@PathVariable String name){
         Integer result =  movieService.deleteByName(name);
         return Response.success(result);

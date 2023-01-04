@@ -3,6 +3,7 @@ package com.example.graph.controller;
 import com.example.graph.controller.response.Response;
 import com.example.graph.dto.request.PersonReqDto;
 import com.example.graph.dto.request.PersonUpdateReqDto;
+import com.example.graph.dto.response.PersonCreateResDto;
 import com.example.graph.dto.response.PersonResDto;
 import com.example.graph.service.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +18,9 @@ public class PersonController {
 
     private final PersonService personService;
 
-    @PostMapping("/create")
-    public Response<?> create(@RequestBody PersonReqDto reqDto){
-        PersonResDto resDto = personService.create(reqDto);
+    @PostMapping
+    public Response<PersonCreateResDto> create(@RequestBody PersonReqDto reqDto){
+        PersonCreateResDto resDto = personService.create(reqDto);
         return Response.success(resDto);
     }
 
@@ -29,7 +30,7 @@ public class PersonController {
         return Response.success(resDtoList);
     }
 
-    @GetMapping("/Object")
+    @GetMapping("/object")
     public Response<List<PersonResDto>> findAllByObject(@RequestBody PersonReqDto reqDto){
         List<PersonResDto> resDtoList = personService.findAllByObject(reqDto);
         return Response.success(resDtoList);

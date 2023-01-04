@@ -3,6 +3,7 @@ package com.example.graph.service;
 import com.example.graph.domain.Person;
 import com.example.graph.dto.request.PersonReqDto;
 import com.example.graph.dto.request.PersonUpdateReqDto;
+import com.example.graph.dto.response.PersonCreateResDto;
 import com.example.graph.dto.response.PersonResDto;
 import com.example.graph.mapper.PersonMapper;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +18,10 @@ public class PersonServiceImpl implements PersonService{
 
     private final PersonMapper personMapper;
 
-    public PersonResDto create(PersonReqDto reqDto){
+    public PersonCreateResDto create(PersonReqDto reqDto){
         Person person = new Person(reqDto);
         personMapper.save(person);
-        PersonResDto resDto = new PersonResDto(person);
+        PersonCreateResDto resDto = new PersonCreateResDto(person);
         return resDto;
     }
 

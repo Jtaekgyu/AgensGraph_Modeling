@@ -15,8 +15,8 @@ public class PersonResDto {
     String job;
 
     public PersonResDto(Person person){
-        this.name = person.getName();
+        this.name = person.getName().substring(1, person.getName().length()-1);
         this.born = person.getBorn();
-        this.job = person.getJob();
+        this.job = person.getJob().substring(1, person.getJob().length()-1);
     }
 }

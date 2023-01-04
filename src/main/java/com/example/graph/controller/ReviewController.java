@@ -23,8 +23,8 @@ public class ReviewController {
         reviewService.setGraphPath();
     }
 
-    @PostMapping("/create")
-    public Response<?> create(@RequestBody ReviewCreateReqDto reqDto){
+    @PostMapping
+    public Response<ReviewCreateResDto> create(@RequestBody ReviewCreateReqDto reqDto){
         ReviewCreateResDto resDto = reviewService.create(reqDto);
         return Response.success(resDto);
     }
@@ -35,19 +35,19 @@ public class ReviewController {
         return Response.success(resDtoList);
     }
 
-    @GetMapping("/findByReviewer/{reviewer}")
+    @GetMapping("/reviewer/{reviewer}")
     public Response<List<ReviewResDto>> matchByReviewer(@PathVariable String reviewer){
         List<ReviewResDto> resDtoList = reviewService.matchByReviewer(reviewer);
         return Response.success(resDtoList);
     }
 
-    @GetMapping("/findAllByObject")
+    @GetMapping("/object")
     public Response<List<ReviewResDto>> findAllByObject(@RequestBody ReviewFindAllReqDto reqDto){
         List<ReviewResDto> resDtoList = reviewService.findAllByObject(reqDto);
         return Response.success(resDtoList);
     }
 
-    @DeleteMapping("/delete/{reviewer}")
+    @DeleteMapping("/reviewer/{reviewer}")
     public Response<Integer> deleteByReviewer(@PathVariable String reviewer){
         Integer result = reviewService.deleteByReviewer(reviewer);
         return Response.success(result);
