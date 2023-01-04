@@ -19,11 +19,11 @@ public class EdgeServiceImpl implements EdgeService{
 
     private final EdgeMapper edgeMapper;
 
-    public void createEdge(EdgeReviewedReqDto reqDto){
+    public Integer createEdge(EdgeReviewedReqDto reqDto){
         Review review = new Review(reqDto.getReviewCreateReqDto());
         Movie movie = new Movie(reqDto.getMovieReqDto());
         Reviewed reviewed = new Reviewed(review, movie);
-        edgeMapper.saveEdge(reviewed);
+        return edgeMapper.saveEdge(reviewed);
     }
 
     public Object createMovieToMovie(MovieTwoCreateReqDto reqDto){
@@ -54,8 +54,9 @@ public class EdgeServiceImpl implements EdgeService{
         EdgeReviewed edge = new EdgeReviewed(review, movie, reqDto.getEdgeName());
         graph.addEdge(review, movie, edge);
 
-        edgeMapper.saveEdgeReviewd(edge); // 많으면 list로 줘야할듯
-        return graph.getAllEdges(review, movie);
+        edgeMapper.saveEdgeReviewd(edge);
+        return graph.edgeSet();
+//        return graph.getAllEdges(review, movie);
     }
 
     public Object createEdgePersonToMovie(EdgePtoMReqDto reqDto){
@@ -70,10 +71,10 @@ public class EdgeServiceImpl implements EdgeService{
         graph.addEdge(person, movie, edge);
 
         edgeMapper.saveEdgePersonToMovie(edge);
-        return graph.edgesOf(person);
+//        return graph.edgesOf(person);
 //        return graph.vertexSet();
-//        return graph.edgeSet(); // 아래꺼랑 똑같다.
 //        return graph.getAllEdges(person, movie);
+        return graph.edgeSet();
     }
 
     public Object CreatePersonActedInMovie(EdgePActMReqDto reqDto){

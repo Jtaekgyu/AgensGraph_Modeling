@@ -13,32 +13,32 @@ public class EdgeController {
 
     private final EdgeService edgeService;
 
-    @PostMapping("/create")
-    public Response<?> setEdge (@RequestBody EdgeReviewedReqDto reqDto){
-        edgeService.createEdge(reqDto);
-        return null;
+    @PostMapping
+    public Response<Integer> setEdge (@RequestBody EdgeReviewedReqDto reqDto){
+        Integer result = edgeService.createEdge(reqDto);
+        return Response.success(result);
     }
 
-    @PostMapping("/CreatMovieToMovie")
+    @PostMapping("/movie-to-movie")
     public Response<?> createMovieToMovie(@RequestBody MovieTwoCreateReqDto reqDto){
         Object result = edgeService.createMovieToMovie(reqDto);
         return Response.success(result);
     }
 
-    @PostMapping("/CreateReviewToMovie")
+    @PostMapping("/review-reviewed-movie")
     public Response<?> createReviewToMovie(@RequestBody EdgeReviewedReqDto reqDto){
         Object result = edgeService.createReviewToMovie(reqDto);
         return Response.success(result);
     }
 
-    @PostMapping("/CreatePersonToMovie")
-    public Response<?> CreatePersonToMovie(@RequestBody EdgePtoMReqDto reqDto){
+    @PostMapping("/person-edge-movie")
+    public Response<?> createPersonToMovie(@RequestBody EdgePtoMReqDto reqDto){
         Object result = edgeService.createEdgePersonToMovie(reqDto);
         return Response.success(result);
     }
 
-    @PostMapping("/CreatePersonActedInMovie")
-    public Response<?> CreatePersonActedInMovie(@RequestBody EdgePActMReqDto reqDto){
+    @PostMapping("/person-actedin-movie")
+    public Response<?> createPersonActedInMovie(@RequestBody EdgePActMReqDto reqDto){
         Object result = edgeService.CreatePersonActedInMovie(reqDto);
         return Response.success(result);
     }

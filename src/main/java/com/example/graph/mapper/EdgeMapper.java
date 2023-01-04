@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface EdgeMapper {
 
-    void saveEdge(Reviewed reviewed);
+    Integer saveEdge(Reviewed reviewed);
 
     void saveMovieToMovie(EdgeMovieToMovie edge);
 
