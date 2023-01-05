@@ -17,7 +17,7 @@ public interface EdgeMapper {
 
     void saveEdgePersonToMovie(EdgePersonToMovie edge);
 
-    void saveEdgePersonActedInMovie(GeneratorPerActMov generator);
+    void saveEdgePersonActedInMovie(EdgeGenPerActMov generator);
 
     List<Object> findAllVEV(VEVReqDto reqDto);
 }

@@ -7,7 +7,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class GeneratorPerActMov {
+public class EdgeGenPerActMov {
 
     private Person person;
 

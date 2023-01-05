@@ -7,6 +7,6 @@ public interface EdgeService {
     Object createMovieToMovie(MovieTwoCreateReqDto reqDto);
     Object createReviewToMovie(EdgeReviewedReqDto reqDto);
     Object createEdgePersonToMovie(EdgePtoMReqDto reqDto);
-    Object CreatePersonActedInMovie(EdgePActMReqDto reqDto);
+    Object createPersonActedInMovie(EdgePActMReqDto reqDto);
     Object findVertexEdgeVertex(VEVReqDto reqDto);
 }

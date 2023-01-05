@@ -35,15 +35,15 @@
         (P)-[E:${edgeName}]->(M);
     </insert>
     
-    <insert id="saveEdgePersonActedInMovie" parameterType="com.example.graph.domain.edge.GeneratorPerActMov" useGeneratedKeys="true">
+    <insert id="saveEdgePersonActedInMovie" parameterType="com.example.graph.domain.edge.EdgeGenPerActMov" useGeneratedKeys="true">
         CREATE
         (P:Person { name:#{person.name}, born:#{person.born}, job:#{person.job} } ),
         (M:Movie { name:#{movie.name}, rating:#{movie.rating} } ),
         (P)-[E:Acted_in { role: #{edge.role} } ]->(M);
     </insert>
     
-    <select id="findAllVEV" parameterType="com.example.graph.dto.request.VEVReqDto" resultType="Object">
-        MATCH (${startV})-[${edge}]->(${endV}) RETURN ${startV},${edge},${endV};
+    <select id="findAllVEV" parameterType="com.example.graph.dto.request.VEVReqDto" resultType="com.example.graph.dto.response.VEVResDto">
+        MATCH ( V1:${startV})-[E:${edge}]->(V2:${endV}) RETURN V1,E,V2;
     </select>
 
 </mapper>
