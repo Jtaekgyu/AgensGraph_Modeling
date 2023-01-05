@@ -21,7 +21,6 @@
         RETURN R.reviewer as reviewer, R.review as review, R.rating as rating;
     </select>
 
-    <!-- parameterType 안적어도 되네..-->
     <select id="findAllByObject" resultType="com.example.graph.domain.Review">
         MATCH (R:Review { reviewer:#{reviewer}, review:#{review}, rating:#{rating} } )
         return R.reviewer as reviewer, R.review as review, R.rating as rating;
@@ -36,12 +35,5 @@
         MATCH (r:review {reviewer:#{reviewer} } )
         DETACH DELETE R;
     </delete>
-<!--
-CREATE (m1:movie {name:'The Matrix', rating:10})
-create (r1: Review { reviewer: 'person1', review: 'good movie!', rating: 10})
--->
-    <!-- MATCH (V)-[R]->(V2) WHERE LABEL(R) = 'invest' RETURN V.투자자이름, LABEL(R), V2.투자받은회사이름;
-    투자자이름, 투자받은회사이름 이런게 properties입니다.
-    원래대로라면 jsonb에 박혀있겠죠-->
 
 </mapper>
