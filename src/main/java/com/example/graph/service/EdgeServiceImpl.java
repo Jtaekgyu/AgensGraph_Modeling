@@ -31,7 +31,7 @@ public class EdgeServiceImpl implements EdgeService{
         EdgeMovieToMovie edge1 = new EdgeMovieToMovie(movie1, movie2);
 
         edgeMapper.saveMovieToMovie(edge1);
-        return graphMethod(movie1, edge1, movie2);
+        return graphConnect(movie1, edge1, movie2);
     }
 
     public Object createReviewToMovie(EdgeReviewedReqDto reqDto){
@@ -40,7 +40,7 @@ public class EdgeServiceImpl implements EdgeService{
         EdgeReviewed edge = new EdgeReviewed(review, movie, reqDto.getEdgeName());
 
         edgeMapper.saveEdgeReviewd(edge);
-        return graphMethod(review, edge, movie);
+        return graphConnect(review, edge, movie);
     }
     public Object createEdgePersonToMovie(EdgePtoMReqDto reqDto){
         Person person = new Person(reqDto.getPersonReqDto());
@@ -48,11 +48,7 @@ public class EdgeServiceImpl implements EdgeService{
         EdgePersonToMovie edge = new EdgePersonToMovie(person, movie, reqDto.getEdgeName());
 
         edgeMapper.saveEdgePersonToMovie(edge);
-        return graphMethod(person, edge, movie);
-//        return graph.edgesOf(person);
-//        return graph.vertexSet();
-//        return graph.getAllEdges(person, movie);
-//        return graph.edgeSet();
+        return graphConnect(person, edge, movie);
     }
 
     public Object createPersonActedInMovie(EdgePActMReqDto reqDto){
@@ -74,16 +70,26 @@ public class EdgeServiceImpl implements EdgeService{
         return resObjList;
     }
 
-    public <V1, E, V2> Set<E> graphMethod(V1 startV, E edge, V2 endV){
+    public <V1, E, V2> E testgraphMehtod(V1 startV, E edge, V2 endV){
+        SimpleDirectedGraph<Object, E> graph = new SimpleDirectedGraph<Object, E>((Class<? extends E>) edge.getClass());
+        graph.addVertex(startV);
+        graph.addVertex(endV);
+        graph.addEdge(startV, endV, edge);
+        return graph.getEdge(startV,endV); // 집합은 아니고 startV,endV에 커넥션된 vertex와 edge를 반환한다.
+    }
+
+    public <V1, E, V2> Set<E> graphConnect(V1 startV, E edge, V2 endV){
         SimpleDirectedGraph<Object, E> graph = new SimpleDirectedGraph<Object, E>((Class<? extends E>) edge.getClass());
 
         graph.addVertex(startV);
         graph.addVertex(endV);
         graph.addEdge(startV, endV, edge);
-
-        return graph.edgeSet();
+//        return graph.edgesOf(startV); // Vertex에 있는 모든 edge 집합(edge와 연결된 vertex와 edge)을 반환
+//        return graph.vertexSet(); // graph에 있는 vertexSet(vertex와 연결된 모든 vertex와 edge)을 반환
+//        return graph.getAllEdges(startV, endV); // sourceV와 targetV를 잇는 모든 edgeSet(edge와 연결된 vertex와 edge)을 반환
+//        return graph.getEdge(startV,endV); // 집합은 아니고 startV,endV에 커넥션된 vertex와 edge를 반환한다.
+        return graph.edgeSet(); // graph의 edgeSet을 반환
     }
-
     public <V1, E, V2> List<Object> graphConnectList(V1 startV, E edge, V2 endV){
         SimpleDirectedGraph<Object, E> graph = new SimpleDirectedGraph<Object, E>((Class<? extends E>) edge.getClass());
 
@@ -92,11 +98,12 @@ public class EdgeServiceImpl implements EdgeService{
         graph.addEdge(startV, endV, edge);
 
         List<Object> resultList = new ArrayList<>();
+        // 사실 지금은 V1-E->V2 하나이다.
         resultList.add(graph.vertexSet());
         resultList.add(graph.edgeSet());
         return resultList;
     }
-    // 현재 person과 movie가 implements Node 하지 않았기 때문에 돌아가지는 않는다.
+
     /*public Object EdgePersonToMovieByIfc(EdgePtoMReqDto reqDto){
         Vperson vperson = new Vperson(reqDto.getPersonReqDto());
         Vmovie vmovie = new Vmovie(reqDto.getMovieReqDto());

@@ -20,31 +20,31 @@ public class EdgeController {
     }
 
     @PostMapping("/movie-to-movie")
-    public Response<?> createMovieToMovie(@RequestBody MovieTwoCreateReqDto reqDto){
+    public Response<Object> createMovieToMovie(@RequestBody MovieTwoCreateReqDto reqDto){
         Object result = edgeService.createMovieToMovie(reqDto);
         return Response.success(result);
     }
 
     @PostMapping("/review-reviewed-movie")
-    public Response<?> createReviewToMovie(@RequestBody EdgeReviewedReqDto reqDto){
+    public Response<Object> createReviewToMovie(@RequestBody EdgeReviewedReqDto reqDto){
         Object result = edgeService.createReviewToMovie(reqDto);
         return Response.success(result);
     }
 
     @PostMapping("/person-edge-movie")
-    public Response<?> createPersonToMovie(@RequestBody EdgePtoMReqDto reqDto){
+    public Response<Object> createPersonToMovie(@RequestBody EdgePtoMReqDto reqDto){
         Object result = edgeService.createEdgePersonToMovie(reqDto);
         return Response.success(result);
     }
 
     @PostMapping("/person-actedin-movie")
-    public Response<?> createPersonActedInMovie(@RequestBody EdgePActMReqDto reqDto){
+    public Response<Object> createPersonActedInMovie(@RequestBody EdgePActMReqDto reqDto){
         Object result = edgeService.createPersonActedInMovie(reqDto);
         return Response.success(result);
     }
 
     @GetMapping("/vev")
-    public Response<?> findVertexEdgeVertex(@RequestBody VEVReqDto reqDto){
+    public Response<Object> findVertexEdgeVertex(@RequestBody VEVReqDto reqDto){
         Object result = edgeService.findVertexEdgeVertex(reqDto);
         return Response.success(result);
     }
